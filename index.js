@@ -7,8 +7,8 @@ const port = 3000
 
 const corsOptions = {
 	origin: [
-		'https://bahor-foods-menu-site.vercel.app/',
-		'https://bahor-foods-menu-admin.vercel.app/',
+		'https://bahor-foods-menu-site.vercel.app',
+		'https://bahor-foods-menu-admin.vercel.app',
 	],
 	methods: ['GET', 'POST', 'PUT', 'DELETE'],
 	allowedHeaders: ['Content-Type', 'Authorization', 'x-api-key'],
