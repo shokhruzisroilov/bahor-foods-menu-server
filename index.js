@@ -5,17 +5,12 @@ const cors = require('cors') // Import cors
 const app = express()
 const port = 3000
 
-const corsOptions = {
-	origin: true,
-	methods: ['GET', 'POST', 'PUT', 'DELETE'],
-	allowedHeaders: ['Content-Type', 'Authorization', 'x-api-key'],
-}
 // Routerni import
 const foodRoutes = require('./routes/foods')
 
 // Middleware
 app.use(express.json())
-app.use(cors(corsOptions))
+app.use(cors())
 
 // MongoDB-ga ulanish
 mongoose
