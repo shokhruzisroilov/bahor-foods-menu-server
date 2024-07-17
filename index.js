@@ -10,7 +10,7 @@ let corsOptions = {
 	origin: [
 		'http://localhost:5173',
 		'https://bahor-foods-menu-site.vercel.app',
-		'http://anotherdomain.com',
+		'https://bahor-foods-menu-admin.vercel.app',
 	],
 }
 
