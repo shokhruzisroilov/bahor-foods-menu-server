@@ -9,7 +9,7 @@ const port = 3000
 let corsOptions = {
 	origin: [
 		'http://localhost:5173',
-		'http://example.com',
+		'https://bahor-foods-menu-site.vercel.app',
 		'http://anotherdomain.com',
 	],
 }
