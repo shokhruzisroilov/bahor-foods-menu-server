@@ -5,12 +5,21 @@ const cors = require('cors') // Import cors
 const app = express()
 const port = 3000
 
+// enabling CORS for some specific origins only.
+let corsOptions = {
+	origin: [
+		'http://localhost:5173',
+		'http://example.com',
+		'http://anotherdomain.com',
+	],
+}
+
 // Routerni import
 const foodRoutes = require('./routes/foods')
 
 // Middleware
 app.use(express.json())
-app.use(cors())
+app.use(cors(corsOptions))
 
 // MongoDB-ga ulanish
 mongoose
