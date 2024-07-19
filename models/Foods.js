@@ -17,6 +17,7 @@ const foodSchema = new mongoose.Schema({
 	},
 	subcategory: {
 		type: String,
+		default: '', // Optional qilib qo'yish va bo'sh qiymatni o'rnatish
 	},
 	price: {
 		type: String,
@@ -31,7 +32,7 @@ const foodSchemaValidate = Joi.object({
 	img: Joi.string().required(),
 	name: Joi.string().required(),
 	category: Joi.string().required(),
-	subcategory: Joi.string(),
+	subcategory: Joi.string().allow(''), // Allow empty string for subcategory
 	price: Joi.string().required(),
 })
 

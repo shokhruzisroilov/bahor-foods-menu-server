@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
 		img: req.body.img,
 		name: req.body.name,
 		category: req.body.category,
-		subcategory: req.body.subcategory,
+		subcategory: req.body.subcategory || '', // Default to empty string if not provided
 		price: req.body.price,
 	})
 
@@ -32,7 +32,8 @@ router.get('/', async (req, res) => {
 		const foods = await Food.find({})
 		res.send(foods)
 	} catch (error) {
-		res.status(500).send(error)
+		console.error("Food ro'yxatini olishda xatolik:", error.message)
+		res.status(500).send('Ichki server xatosi')
 	}
 })
 
@@ -48,11 +49,12 @@ router.patch('/:id', async (req, res) => {
 			runValidators: true,
 		})
 		if (!food) {
-			return res.status(404).send()
+			return res.status(404).send('Food topilmadi')
 		}
 		res.send(food)
 	} catch (error) {
-		res.status(400).send(error)
+		console.error('Food yangilashda xatolik:', error.message)
+		res.status(500).send('Ichki server xatosi')
 	}
 })
 
@@ -61,11 +63,12 @@ router.delete('/:id', async (req, res) => {
 	try {
 		const food = await Food.findOneAndDelete({ _id: req.params.id })
 		if (!food) {
-			return res.status(404).send()
+			return res.status(404).send('Food topilmadi')
 		}
 		res.send(food)
 	} catch (error) {
-		res.status(500).send(error)
+		console.error("Food o'chirishda xatolik:", error.message)
+		res.status(500).send('Ichki server xatosi')
 	}
 })
 
