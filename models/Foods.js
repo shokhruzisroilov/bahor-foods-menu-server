@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Joi = require('joi')
 
-// Mongoose schema
+// Food modelini aniqlash
 const foodSchema = new mongoose.Schema({
 	img: {
 		type: String,
@@ -15,6 +15,9 @@ const foodSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	subcategory: {
+		type: String,
+	},
 	price: {
 		type: String,
 		required: true,
@@ -23,12 +26,16 @@ const foodSchema = new mongoose.Schema({
 
 const Food = mongoose.model('Food', foodSchema)
 
-// Joi validation schema
+// Validatsiya uchun schema
 const foodSchemaValidate = Joi.object({
-	img: Joi.string().uri().required(),
-	name: Joi.string().min(3).required(),
+	img: Joi.string().required(),
+	name: Joi.string().required(),
 	category: Joi.string().required(),
+	subcategory: Joi.string(),
 	price: Joi.string().required(),
 })
 
-module.exports = { Food, foodSchemaValidate }
+module.exports = {
+	Food,
+	foodSchemaValidate,
+}

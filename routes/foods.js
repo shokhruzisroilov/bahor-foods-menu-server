@@ -13,6 +13,7 @@ router.post('/', async (req, res) => {
 		img: req.body.img,
 		name: req.body.name,
 		category: req.body.category,
+		subcategory: req.body.subcategory,
 		price: req.body.price,
 	})
 
@@ -20,7 +21,6 @@ router.post('/', async (req, res) => {
 		await food.save()
 		res.status(201).send(food)
 	} catch (error) {
-		// res.status(400).send(error)
 		console.error('Food saqlashda xatolik:', error.message)
 		res.status(500).send('Ichki server xatosi')
 	}
