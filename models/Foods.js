@@ -17,6 +17,7 @@ const foodSchema = new mongoose.Schema({
 	},
 	subcategory: {
 		type: String,
+		required: false,
 	},
 	price: {
 		type: String,
@@ -31,7 +32,7 @@ const foodSchemaValidate = Joi.object({
 	img: Joi.string().required(),
 	name: Joi.string().required(),
 	category: Joi.string().required(),
-	subcategory: Joi.string(),
+	subcategory: Joi.string().required(false),
 	price: Joi.string().required(),
 })
 
